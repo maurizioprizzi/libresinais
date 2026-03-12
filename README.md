@@ -33,7 +33,7 @@ Estamos começando pelo reconhecimento do **alfabeto manual de Libras** (A–Z, 
 
 | Data | Dia | O que foi feito |
 |---|---|---|
-| 12/03/2026 | Dia 1 | Criação do repositório, estrutura de pastas, módulos Python e documentação |
+| 09/03/2026 | Dia 1 | Criação do repositório, estrutura de pastas, módulos Python e documentação |
 | 12/03/2026 | Dia 2 | Ambiente virtual configurado, dependências instaladas, primeiro teste com câmera + MediaPipe funcionando ✅ |
 
 ## Estrutura do projeto
@@ -96,9 +96,6 @@ source venv/bin/activate        # Linux/Mac
 
 # 4. Instalar dependências
 pip install -r requirements.txt
-
-# 5. Corrigir versão do MediaPipe (necessário até atualização do requirements)
-pip install mediapipe==0.10.14
 ```
 
 ### Testar a câmera
