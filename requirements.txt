@@ -5,7 +5,8 @@
 opencv-python>=4.8.0
 
 # Detecção de mãos e pose
-mediapipe>=0.10.0
+# IMPORTANTE: versões acima de 0.10.14 mudaram a API (mp.solutions não existe)
+mediapipe==0.10.14
 
 # Machine Learning (sinais estáticos)
 scikit-learn>=1.3.0
