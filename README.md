@@ -29,6 +29,13 @@ Câmera → MediaPipe (detecta as mãos) → Modelo de ML (classifica o sinal) �
 
 Estamos começando pelo reconhecimento do **alfabeto manual de Libras** (A–Z, Ç) e números (0–9).
 
+### Diário de desenvolvimento
+
+| Data | Dia | O que foi feito |
+|---|---|---|
+| 12/03/2026 | Dia 1 | Criação do repositório, estrutura de pastas, módulos Python e documentação |
+| 12/03/2026 | Dia 2 | Ambiente virtual configurado, dependências instaladas, primeiro teste com câmera + MediaPipe funcionando ✅ |
+
 ## Estrutura do projeto
 
 ```
@@ -43,10 +50,11 @@ libresinais/
 │       └── writer_bridge.py # Integração com LibreOffice (UNO)
 ├── models/
 │   └── libras/              # Modelos treinados para Libras
+├── scripts/
+│   └── testar_camera.py     # ✅ Teste de câmera com MediaPipe (funcional)
 ├── data/
 │   ├── raw/                 # Dados brutos coletados
 │   └── processed/           # Dados processados para treinamento
-├── scripts/                 # Scripts auxiliares (coleta de dados, treinamento)
 ├── tests/                   # Testes automatizados
 ├── config/                  # Arquivos de configuração
 ├── docs/                    # Documentação adicional
@@ -55,23 +63,52 @@ libresinais/
 
 ## Tecnologias
 
-| Componente | Tecnologia | Para que serve |
-|---|---|---|
-| Captura de vídeo | OpenCV | Acessar a webcam |
-| Detecção de mãos | MediaPipe Hands | Encontrar os pontos das mãos na imagem |
-| Classificação | scikit-learn / TensorFlow | Identificar qual sinal está sendo feito |
-| Integração | Python-UNO Bridge | Inserir texto no LibreOffice Writer |
+| Componente | Tecnologia | Versão testada | Para que serve |
+|---|---|---|---|
+| Captura de vídeo | OpenCV | 4.13.0 | Acessar a webcam |
+| Detecção de mãos | MediaPipe Hands | 0.10.14 | Encontrar os 21 pontos de cada mão na imagem |
+| Classificação | scikit-learn / TensorFlow | 1.8.0 / em breve | Identificar qual sinal está sendo feito |
+| Integração | Python-UNO Bridge | — | Inserir texto no LibreOffice Writer |
 
-## Requisitos
+## Como instalar
+
+### Pré-requisitos
 
 - Python 3.10 ou superior
-- LibreOffice 7.0 ou superior
+- LibreOffice 7.0 ou superior (para integração futura)
 - Webcam
+- Git
 - Sistema operacional: Linux, Windows ou macOS
 
-## Como instalar (em breve)
+### Instalação
 
-> ⚠️ O projeto ainda está em fase inicial de desenvolvimento. As instruções de instalação serão adicionadas conforme o progresso.
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/maurizioprizzi/libresinais.git
+cd libresinais
+
+# 2. Criar ambiente virtual
+python3 -m venv venv
+
+# 3. Ativar o ambiente virtual
+source venv/bin/activate        # Linux/Mac
+# venv\Scripts\activate         # Windows
+
+# 4. Instalar dependências
+pip install -r requirements.txt
+
+# 5. Corrigir versão do MediaPipe (necessário até atualização do requirements)
+pip install mediapipe==0.10.14
+```
+
+### Testar a câmera
+
+```bash
+# Com o ambiente virtual ativado:
+python scripts/testar_camera.py
+```
+
+Ao rodar, uma janela abrirá mostrando a imagem da webcam. Mostre suas mãos para a câmera e você verá os 21 pontos de referência desenhados em cada mão. Aperte **q** para sair.
 
 ## Como contribuir
 
