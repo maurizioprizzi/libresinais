@@ -35,29 +35,35 @@ Estamos começando pelo reconhecimento do **alfabeto manual de Libras** (A–Z, 
 |---|---|---|
 | 09/03/2026 | Dia 1 | Criação do repositório, estrutura de pastas, módulos Python e documentação |
 | 12/03/2026 | Dia 2 | Ambiente virtual configurado, dependências instaladas, primeiro teste com câmera + MediaPipe funcionando ✅ |
+| 12/03/2026 | Dia 3 | Visualizador de landmarks — coordenadas x, y, z de cada ponto da mão em tempo real ✅ |
+| 12/03/2026 | Dia 4 | Script de coleta de dados para o alfabeto manual de Libras ✅ |
+
+**Próximo passo:** Aplicação web de coleta de dados para que a comunidade surda possa contribuir remotamente com gravações de sinais.
 
 ## Estrutura do projeto
 
 ```
 libresinais/
 ├── python/
-│   └── libresinais/        # Código principal do plugin
+│   └── libresinais/         # Código principal do plugin
 │       ├── __init__.py
-│       ├── camera.py        # Captura de vídeo (OpenCV)
-│       ├── detector.py      # Detecção de mãos (MediaPipe)
-│       ├── classifier.py    # Classificação dos sinais (ML)
-│       ├── stabilizer.py    # Buffer de confiança
-│       └── writer_bridge.py # Integração com LibreOffice (UNO)
+│       ├── camera.py         # Captura de vídeo (OpenCV)
+│       ├── detector.py       # Detecção de mãos (MediaPipe)
+│       ├── classifier.py     # Classificação dos sinais (ML)
+│       ├── stabilizer.py     # Buffer de confiança
+│       └── writer_bridge.py  # Integração com LibreOffice (UNO)
 ├── models/
-│   └── libras/              # Modelos treinados para Libras
+│   └── libras/               # Modelos treinados para Libras
 ├── scripts/
-│   └── testar_camera.py     # ✅ Teste de câmera com MediaPipe (funcional)
+│   ├── testar_camera.py      # ✅ Teste de câmera com MediaPipe
+│   ├── ver_landmarks.py      # ✅ Visualizador de coordenadas dos landmarks
+│   └── coletar_dados.py      # ✅ Coleta de dados para treinamento
 ├── data/
-│   ├── raw/                 # Dados brutos coletados
-│   └── processed/           # Dados processados para treinamento
-├── tests/                   # Testes automatizados
-├── config/                  # Arquivos de configuração
-├── docs/                    # Documentação adicional
+│   ├── raw/                  # Dados brutos coletados
+│   └── processed/            # Dados processados para treinamento
+├── tests/                    # Testes automatizados
+├── config/                   # Arquivos de configuração
+├── docs/                     # Documentação adicional
 └── README.md
 ```
 
@@ -98,21 +104,25 @@ source venv/bin/activate        # Linux/Mac
 pip install -r requirements.txt
 ```
 
-### Testar a câmera
+### Scripts disponíveis
 
 ```bash
-# Com o ambiente virtual ativado:
+# Testar a câmera com detecção de mãos
 python scripts/testar_camera.py
-```
 
-Ao rodar, uma janela abrirá mostrando a imagem da webcam. Mostre suas mãos para a câmera e você verá os 21 pontos de referência desenhados em cada mão. Aperte **q** para sair.
+# Ver as coordenadas dos landmarks em tempo real
+python scripts/ver_landmarks.py
+
+# Coletar dados para treinamento do modelo
+python scripts/coletar_dados.py
+```
 
 ## Como contribuir
 
 Este é um projeto de doação — toda ajuda é bem-vinda!
 
+- **Comunidade surda:** precisamos de vocês! Em breve teremos uma aplicação web onde qualquer pessoa que conheça Libras poderá contribuir gravando sinais pela câmera, direto do navegador
 - **Desenvolvedores Python:** ajudem com o pipeline de reconhecimento e integração
-- **Comunidade surda:** validem os sinais, gravem dados, deem feedback
 - **Pesquisadores de ML:** ajudem a treinar e otimizar os modelos
 - **Qualquer pessoa:** testem, reportem bugs, sugiram melhorias
 
