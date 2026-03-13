@@ -36,7 +36,7 @@ Estamos começando pelo reconhecimento do **alfabeto manual de Libras** (A–Z, 
 | 09/03/2026 | Dia 1 | Criação do repositório, estrutura de pastas, módulos Python e documentação |
 | 12/03/2026 | Dia 2 | Ambiente virtual configurado, dependências instaladas, primeiro teste com câmera + MediaPipe funcionando ✅ |
 | 12/03/2026 | Dia 3 | Visualizador de landmarks — coordenadas x, y, z de cada ponto da mão em tempo real ✅ |
-| 12/03/2026 | Dia 4 | Script de coleta de dados para o alfabeto manual de Libras ✅ |
+| 13/03/2026 | Dia 4 | Script de coleta de dados para o alfabeto manual de Libras ✅ |
 
 **Próximo passo:** Aplicação web de coleta de dados para que a comunidade surda possa contribuir remotamente com gravações de sinais.
 
